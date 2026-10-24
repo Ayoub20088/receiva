@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Receiva Support</title>
+<meta name="description" content="Help and frequently asked questions for the Receiva receipt scanner app.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" type="image/png" href="https://ayoub20088.github.io/receiva/favicon.png">
+<link rel="apple-touch-icon" href="https://ayoub20088.github.io/receiva/apple-touch-icon.png">
+</head>
+<body>
+<style>
+/* Layout: one centered reading column (max 720px); header with logo + wrapping nav pills; cards only for key callouts. */
+:root {
+  --bg: #050505;
+  --card: #121212;
+  --border: #1F1F1F;
+  --text: #F5F5F5;
+  --muted: #8C8C8C;
+  --accent: #22D46C;
+  --accent-ink: #050505;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-block: 24px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px;
+}
+header.site { display: flex; flex-direction: column; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); width: fit-content; }
+.brand img { width: 44px; height: 44px; flex: none; }
+.brand span { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: row !important; flex-wrap: wrap; gap: 8px; }
+nav a {
+  display: inline-block; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px;
+  color: var(--muted); text-decoration: none; font-size: 0.9375rem; line-height: 1.4;
+}
+nav a:hover { color: var(--text); border-color: var(--muted); }
+nav a[aria-current="page"] { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); font-weight: 600; }
+main { padding-top: 32px; display: flex; flex-direction: column; gap: 32px; }
+h1 { font-family: var(--font-display); font-size: clamp(1.875rem, 6vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.3; margin: 0; text-wrap: balance; }
+h3 { font-size: 1.0625rem; margin: 0; }
+p, ul, ol { margin: 0; }
+ul, ol { padding-left: 1.25em; display: flex; flex-direction: column; gap: 6px; }
+.lead { color: var(--muted); font-size: 1.125rem; max-width: 62ch; }
+.intro { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { color: var(--accent); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.meta { color: var(--muted); font-size: 0.9375rem; }
+section { display: flex; flex-direction: column; gap: 12px; }
+section > p, section li { max-width: 66ch; }
+.muted { color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.email { font-size: 1.125rem; font-weight: 600; word-break: break-all; user-select: all; -webkit-user-select: all; }
+.btn {
+  appearance: none; font: inherit; font-size: 0.9375rem; font-weight: 600; cursor: pointer;
+  padding: 8px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text);
+  text-decoration: none; display: inline-block; line-height: 1.4;
+}
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.path { font-weight: 600; color: var(--text); white-space: nowrap; }
+.faq { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+.faq details { border-bottom: 1px solid var(--border); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 16px 32px 16px 0; font-weight: 600; position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  color: var(--accent); font-size: 1.375rem; font-weight: 400; line-height: 1;
+}
+.faq details[open] summary::after { content: "\2212"; }
+.faq .answer { padding: 0 0 18px; display: flex; flex-direction: column; gap: 10px; color: var(--text); }
+.faq .answer p, .faq .answer li { max-width: 64ch; }
+.summary-list { list-style: none; padding: 0; gap: 10px; }
+.summary-list li { padding-left: 28px; position: relative; }
+.summary-list li::before {
+  content: ""; position: absolute; left: 4px; top: 0.45em; width: 12px; height: 7px;
+  border-left: 2.5px solid var(--accent); border-bottom: 2.5px solid var(--accent); transform: rotate(-45deg);
+}
+.prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.price { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 2px; }
+.price .label { color: var(--muted); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+.price .amount { font-size: 1.375rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.price .note { color: var(--muted); font-size: 0.875rem; }
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.9375rem; list-style: none; padding: 0; }
+.status { color: var(--accent); font-size: 0.875rem; min-height: 1.2em; }
+footer.site { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.875rem; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="https://ayoub20088.github.io/receiva/" aria-label="Receiva">
+      <img width="44" height="44" src="data:image/png;base64,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" alt="" style="border-radius:22.5%;display:block">
+      <span>Receiva</span>
+    </a>
+    <nav aria-label="Receiva pages">
+      <ul>
+      <li><a href="https://ayoub20088.github.io/receiva/support/" aria-current="page">Support</a></li>
+      <li><a href="https://ayoub20088.github.io/receiva/contact/">Contact</a></li>
+      <li><a href="https://ayoub20088.github.io/receiva/privacy/">Privacy Policy</a></li>
+      <li><a href="https://ayoub20088.github.io/receiva/terms/">Terms of Use</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <p class="eyebrow">Help center</p>
+      <h1>Receiva Support</h1>
+      <p class="lead">Receiva scans your paper receipts and invoices, reads them on your device, and keeps them organized by day, week, month and year. Find quick answers below, or email us and we will help.</p>
+    </div>
+    <div class="card">
+  <h2>Need help? Email us</h2>
+  <div class="email-row">
+    <a class="email" href="mailto:ab.apps.support@gmail.com">ab.apps.support@gmail.com</a>
+  </div>
+  <div class="email-row">
+    <button class="btn primary" type="button" id="copy-copy-status" data-copy="ab.apps.support@gmail.com" aria-controls="copy-status">Copy address</button>
+  </div>
+  <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+  <p class="muted">We usually reply within 2 business days. Inside the app you can also use <span class="path">Settings → Help → Contact us</span>.</p>
+</div>
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <div class="faq">
+      <details>
+        <summary>How do I scan a receipt?</summary>
+        <div class="answer"><p>Open Receiva and tap the scan button. Point your camera at the receipt or invoice and take the picture. You can also import a photo or a PDF that is already on your iPhone or iPad.</p>
+<p>Receiva then reads the store, date, total, currency and tax for you, right on your device. Check the details and save.</p></div>
+      </details>
+      <details>
+        <summary>The app read a wrong amount or date. What do I do?</summary>
+        <div class="answer"><p>Automatic reading works well on most receipts, but faded paper, folds or unusual layouts can cause mistakes. Before you save, check the store, date, total, currency and tax, and tap any field to correct it.</p>
+<p>You can also open a saved invoice later and edit it.</p></div>
+      </details>
+      <details>
+        <summary>How does the free trial work?</summary>
+        <div class="answer"><p>Every feature is included in the 7-day free trial, up to 10 new invoices a day. Days you don't use the app still count, and the trial is given once per Apple Account: reinstalling the app or changing iPhone doesn't start it again. After the trial, or to add more than 10 invoices in a day, you can continue with Receiva PRO: $4.99 per month, $39.99 per year, or $99.99 once for life.</p>
+<p>Without PRO, every invoice you already saved stays yours: you can still open, search and export all of them.</p></div>
+      </details>
+      <details>
+        <summary>Can I use Receiva on my iPhone and my iPad?</summary>
+        <div class="answer"><p>Yes. Sign in with the same Apple Account and turn on iCloud on both devices. Your invoices sync automatically between them, and a PRO purchase works on both.</p></div>
+      </details>
+      <details>
+        <summary>How do I restore my purchase on a new device?</summary>
+        <div class="answer"><p>Sign in with the same Apple Account you used to buy Receiva PRO. Then open Receiva and go to <span class="path">Settings → Receiva PRO → Restore purchases</span>.</p></div>
+      </details>
+      <details>
+        <summary>How do I cancel my subscription?</summary>
+        <div class="answer"><p>Subscriptions are managed by Apple. On your iPhone or iPad, open <span class="path">Settings → your name → Subscriptions</span>, choose Receiva and tap Cancel Subscription.</p>
+<p>Cancel at least 24 hours before the end of the current period to avoid being charged for the next one. Your old invoices always stay viewable and exportable, even after your subscription ends.</p></div>
+      </details>
+      <details>
+        <summary>How are my invoices backed up?</summary>
+        <div class="answer"><p>If iCloud is turned on for your Apple Account, Receiva backs up your invoices automatically to your own private iCloud. We cannot see or access them.</p>
+<p>You can also export a backup file yourself at any time from Settings in Receiva, and keep it wherever you like.</p></div>
+      </details>
+      <details>
+        <summary>How do I change the language or home currency?</summary>
+        <div class="answer"><p><strong>Language.</strong> Receiva follows your device language when it is one of the 11 supported languages: English, French, Arabic, Spanish, German, Portuguese (Brazil), Italian, Turkish, Japanese, Korean and Chinese (Simplified). To choose another one just for Receiva, open <span class="path">Settings → Language</span> inside the app.</p>
+<p><strong>Home currency.</strong> In Receiva, open <span class="path">Settings → Country &amp; currency</span>. Receiva works with every currency in the world and converts each invoice to your home currency using the exchange rate of the purchase day.</p></div>
+      </details>
+      <details>
+        <summary>Does the app work offline?</summary>
+        <div class="answer"><p>Yes. Scanning and reading receipts work fully offline, because text recognition happens on your device.</p>
+<p>Exchange rates need an internet connection. If you add an invoice in a foreign currency while offline, Receiva corrects the conversion automatically when you are back online.</p></div>
+      </details>
+      <details>
+        <summary>How do I delete my data?</summary>
+        <div class="answer"><ul>
+  <li>Delete any invoice inside the app. Deleted invoices stay in <strong>Recently Deleted</strong> for 30 days, so you can recover them if needed, and are then removed.</li>
+  <li>To remove everything, delete the app, then delete its iCloud data in iPhone <span class="path">Settings → your name → iCloud</span> (manage storage, choose Receiva, delete data).</li>
+</ul>
+<p>We do not hold a copy of your data, so there is nothing left on our side.</p></div>
+      </details>
+    </div>
+    </section>
+    <section aria-labelledby="about-title">
+      <h2 id="about-title">About Receiva</h2>
+      <ul>
+        <li>For iPhone and iPad, iOS 17 or later.</li>
+        <li>Available in 11 languages.</li>
+        <li>7-day free trial, up to 10 invoices a day (once per Apple Account), then Receiva PRO: $4.99/month, $39.99/year, or $99.99 one-time lifetime.</li>
+        <li>Export PDF or CSV reports at any time.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site">
+    <p>&copy; 2026 AB Apps &middot; ab.apps.support@gmail.com</p>
+  </footer>
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    var status = document.getElementById(btn.getAttribute('aria-controls'));
+    function done(msg) { if (status) status.textContent = msg; }
+    function selectFallback() {
+      var el = document.querySelector('.email');
+      if (el && window.getSelection) {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      }
+      var copied = false;
+      try { copied = document.execCommand('copy'); } catch (e) {}
+      done(copied ? 'Email address copied.' : 'Email selected. Copy it from the selection.');
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done('Email address copied.'); }, selectFallback);
+    } catch (e) { selectFallback(); }
+  });
+});
+</script>
+</body>
+</html>
